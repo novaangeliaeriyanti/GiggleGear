@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+:root {
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+@theme {
+  --color-cyan-200: oklch(0.917 0.08 205.041);
+  --color-sky-200: oklch(0.901 0.058 230.902);
+  --color-teal-400: oklch(0.777 0.152 181.912);
+  --color-fuchsia-200: oklch(0.903 0.076 319.62);
+  --color-pink-400: oklch(0.718 0.202 349.761);
+  --color-red-500: oklch(0.637 0.237 25.331);
+}
+  
+body {
+    font-family: var(--font-poppins);
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
