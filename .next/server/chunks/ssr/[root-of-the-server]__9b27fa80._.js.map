@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 37, "column": 0}, "map": {"version":3,"sources":["file:///Users/nova/Documents/Mine/Project/e-commerce-ui/client/src/components/ShoppingCartIcon.tsx"],"sourcesContent":["\"use client\"\n\nimport { ShoppingCart } from \"lucide-react\"\nimport Link from \"next/link\"\n\nconst ShoppingCartIcon = () => {\n  return (\n    <Link href=\"/cart\" className=\"relative\">\n         <ShoppingCart className=\"w-4 h-4 text-gray-600\" />\n         <span className=\"absolute -top-3 -right-3 bg-amber-400 text-gray-600 rounded-full w-4 h-4 flex items-center justify-center text-xs font-medium\">\n            0\n        </span>\n    </Link>\n  )\n}\n\nexport default ShoppingCartIcon"],"names":[],"mappings":";;;;AAEA;AACA;AAHA;;;;AAKA,MAAM,mBAAmB;IACvB,qBACE,8OAAC,4JAAA,CAAA,UAAI;QAAC,MAAK;QAAQ,WAAU;;0BACxB,8OAAC,sNAAA,CAAA,eAAY;gBAAC,WAAU;;;;;;0BACxB,8OAAC;gBAAK,WAAU;0BAAgI;;;;;;;;;;;;AAKzJ;uCAEe","debugId":null}}]
+}
