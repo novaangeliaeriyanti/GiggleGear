@@ -18,10 +18,24 @@ body {
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none; /* IE & Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+}
+
+.text-stroke-3 {
+  text-shadow:
+    3px 0 0 #fff, -3px 0 0 #fff,
+    0 3px 0 #fff, 0 -3px 0 #fff,
+    3px 3px 0 #fff, -3px 3px 0 #fff,
+    3px -3px 0 #fff, -3px -3px 0 #fff;
+}
+
+.text-heading-1, .text-heading-2{
+  letter-spacing: -.48px;
+  font-weight: 900;
+  line-height: normal;
 }

@@ -14,7 +14,7 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex items-center justify-end gap-2 text-sm text-gray-500 my-6">
+    <div className="flex items-center justify-end gap-2 text-sm text-gray-500 mt-6">
       <span>Sort by:</span>
       <select
         name="sort"

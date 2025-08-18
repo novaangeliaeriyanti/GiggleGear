@@ -3,6 +3,8 @@ import Categories from "./Categories";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import Filter from "./Filter";
+import CategoriesProduct from "./CategoriesProduct";
+import VoucherBanner from "./VoucherBanner";
 
 //TEMPORARY
 const products: ProductsType = [
@@ -118,20 +120,41 @@ const products: ProductsType = [
   
   const ProductList = ({ category,params }: { category: string, params?:"homepage" | "products" }) => {
     return (
-      <div className="w-full">
-        <Categories />
-        {params === "products" && <Filter/>}
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
-            {products.map((product)=>(
-                <ProductCard key={product.id} product={product} />
-            ))}
+      <div className="flex justify-center">
+        <div className="w-full flex flex-col gap-3 md:gap-12 lg:gap-12 sm:px-0 sm:max-w-xl md:max-w-3xl lg:max-w-7xl">
+          {params === "products" && <Filter/>}
+          {params !== "products" && <VoucherBanner />}
+          {/* <div className="bg-sky-100 rounded-3xl flex flex-col gap-4 md:gap-8 lg:gap-8 p-4 md:p-12 lg:p-24"> */}
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+            {params !== 'products' && (<div className="flex items-center gap-2 text-3xl font-bold">
+                <span className="flex space-x-2 text-teal-400">
+                  <span>Popular</span>
+                </span>
+                <span className="flex text-pink-400 space-x-2">
+                  <span>Products</span>
+                  </span>
+              </div>)}
+              {/* <span>Choose your favorite products through our collection</span> */}
+            </div>
+            <div className="flex justify-between items-center">
+              <CategoriesProduct />
+              {params !== "products" && (
+                <Link
+                  href={category ? `/products/?category=${category}` : "/products"}
+                  className="flex text-pink-400 justify-end mt-4"
+                >
+                  View all products
+                </Link>
+              )}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
+                {products.map((product)=>(
+                    <ProductCard key={product.id} product={product} />
+                ))}
+            </div>
+          </div>
         </div>
-        <Link
-          href={category ? `/products/?category=${category}` : "/products"}
-          className="flex justify-end mt-4 underline text-sm text-gray-500"
-        >
-          View all products
-        </Link>
       </div>
     )
   }

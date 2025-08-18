@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`${poppins.variable} antialiased`}
       >
           <Navbar />
-          <div className="mx-auto pt-[85px] p-4 sm:px-0 sm:max-w-xl md:max-w-3xl lg:max-w-7xl lg:px-6 lg:pt-24">
+          <div className="pt-[85px] overflow-clip">
             {children}
             <Footer />
           </div>

@@ -37,17 +37,24 @@ const ProductCard = ({product}:{product:ProductType}) => {
     toast.success("Product added to cart")
   };
   return (
-    <div className="shadow-lg rounded-lg overflow-hidden">
+    <div className="bg-white border-[1px] border-neutral-300 rounded-3xl overflow-hidden">
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[2/3]">
+        <div className="relative aspect-[1]">
+          {/* Label Diskon */}
+            <span className="absolute top-0 left-0 bg-pink-400 text-white rounded-br-xl font-bold px-6 py-2 z-10">
+              50%
+            </span>
+
+          {/* Gambar Produk */}
           <Image 
             src={product.images[productTypes.color]} 
             alt={product.name}
             fill
-            className="object-cover hover:scale-105 transition-all duration-300"
+            className="object-contain hover:scale-105 transition-all duration-300"
           />
         </div>
       </Link>
+
       {/* PRODUCT DETAIL */}
       <div className="flex flex-col gap-4 p-4">
         <h1 className="font-medium">{product.name}</h1>
@@ -60,7 +67,7 @@ const ProductCard = ({product}:{product:ProductType}) => {
             <select 
               name="size" 
               id="size" 
-              className="ring ring-gray-300 rounded-md px-2 py-1"
+              className="ring ring-gray-300 rounded-lg px-2 py-1"
               onChange={(e) =>
                 handleProductType({ type: "size", value: e.target.value })
               }
@@ -98,10 +105,10 @@ const ProductCard = ({product}:{product:ProductType}) => {
         </div>
         {/* PRICE AND ADD TO CART BUTTON */}
         <div className="flex items-center justify-between">
-          <p className="font-medium">${product.price.toFixed(2)}</p>
+          <p className="font-bold">${product.price.toFixed(2)}</p>
           <button
             onClick={handleAddToCart}
-            className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2"
+            className="ring-1 rounded-lg px-2 py-1 text-sm cursor-pointer text-white bg-pink-400 ring-pink-400 hover:text-pink-400 hover:bg-white hover:ring-pink-400  transition-all duration-300 flex items-center gap-2"
           >
             <ShoppingCart className="w-4 h-4" />
             Add to Cart

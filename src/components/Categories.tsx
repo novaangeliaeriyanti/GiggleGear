@@ -152,64 +152,82 @@ import { useRef } from "react";
     };
   
     return (
-      <div className="group relative">
-        {/* Tombol panah kiri */}
-        <button
-          onClick={() => scroll("left")}
-          aria-label="Scroll Left"
-          className="
-            absolute left-0 top-[53px] -translate-y-1/2 
-            translate-x-[-40px] group-hover:translate-x-0
-            opacity-0 group-hover:opacity-100
-            pointer-events-none group-hover:pointer-events-auto
-            transition-all duration-300 ease-in-out
-            flex z-10 text-pink-400 border-2 border-dashed border-pink-400 p-2
-            hover:text-white hover:bg-pink-400 rounded-full
-          "
-        >
-           <ChevronLeft className="w-6 h-6" />
-        </button>
-  
-        {/* Container scrollable */}
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-5 mb-4 text-sm scroll-smooth scrollbar-hidden md:mx-[44px] lg:mx-[44px]"
-        >
-          {categories?.map((category, index) => (
-            <div
-              key={index}
-              onClick={() => handleChange(category.slug)}
-              className={`group/child flex-shrink-0 flex flex-col items-center justify-center gap-2 cursor-pointer px-2 py-1
-                ${category.slug === selectedCategory ? "bg-white" : "text-black"}
-              `}
-            >
-              <div className="bg-[#d0f1f1] rounded-3xl md:rounded-3xl p-[24px] md:p-[30px] lg:p-[30px]">
-                {category.icon}
-              </div>
-              <span className="font-bold group-hover/child:text-teal-400">
-                {category.name}
-              </span>
-            </div>
-          ))}
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col items-center text-center gap-2">
+          <div className="flex items-center gap-2 text-3xl font-bold">
+            <span className="flex space-x-2 text-teal-400">
+              <span>Shop</span>
+              <span>by</span>
+            </span>
+            <span className="flex text-pink-400 space-x-2">
+              <span>Official</span>
+              <span>Store</span>
+            </span>
+          </div>
+          <span>Choose your favorite products through our collection</span>
         </div>
-  
-        {/* Tombol panah kanan */}
-        <button
-          onClick={() => scroll("right")}
-          aria-label="Scroll Right"
-          className="
-            absolute right-0 top-[53px] -translate-y-1/2 
-            -translate-x-[-40px] group-hover:translate-x-0
-            opacity-0 group-hover:opacity-100
-            pointer-events-none group-hover:pointer-events-auto
-            transition-all duration-300 ease-in-out
-            flex z-10 text-pink-400 border-2 border-dashed border-pink-400 p-2
-            hover:text-white hover:bg-pink-400 rounded-full
-          "
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
+        <div className="group relative">
+          {/* Tombol panah kiri */}
+          <button
+            onClick={() => scroll("left")}
+            aria-label="Scroll Left"
+            className="
+              absolute left-0 top-1/2 -translate-y-1/2 
+              translate-x-[-40px] group-hover:translate-x-0
+              opacity-0 group-hover:opacity-100
+              pointer-events-none group-hover:pointer-events-auto
+              transition-all duration-300 ease-in-out
+              flex z-10 text-pink-400 border-2 border-dashed border-pink-400 p-2
+              hover:text-white hover:bg-pink-400 rounded-full
+            "
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+    
+          {/* Container scrollable */}
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto gap-5 mb-4 text-sm scroll-smooth scrollbar-hidden md:mx-[44px] lg:mx-[44px]"
+          >
+            {categories?.map((category, index) => (
+              <div
+                key={index}
+                onClick={() => handleChange(category.slug)}
+                className={`group/child flex-shrink-0 flex flex-col items-center justify-center gap-2 cursor-pointer px-2 py-1
+                  ${category.slug === selectedCategory ? "bg-white" : "text-black"}
+                `}
+              >
+                <div className="flex shrink-0 grow-0 items-center justify-center flex-col gap-4 border-[1px] border-neutral-300 rounded-3xl md:rounded-3xl w-32 h-32">
+                  <div className="">
+                    {category.icon}
+                  </div>                
+                  <span className="group-hover/child:text-pink-400 text-center">
+                    {category.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+    
+          {/* Tombol panah kanan */}
+          <button
+            onClick={() => scroll("right")}
+            aria-label="Scroll Right"
+            className="
+              absolute right-0 top-1/2 -translate-y-1/2 
+              -translate-x-[-40px] group-hover:translate-x-0
+              opacity-0 group-hover:opacity-100
+              pointer-events-none group-hover:pointer-events-auto
+              transition-all duration-300 ease-in-out
+              flex z-10 text-pink-400 border-2 border-dashed border-pink-400 p-2
+              hover:text-white hover:bg-pink-400 rounded-full
+            "
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
       </div>
+
     );
   };
 

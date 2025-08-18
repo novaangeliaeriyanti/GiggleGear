@@ -29,7 +29,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full aspect-[3/1] overflow-hidden mb-3 rounded-3xl md:mb-12 lg:mb-12">
+    <div className="relative w-full aspect-[3/1] overflow-hidden mb-3 md:mb-12 lg:mb-12">
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{
@@ -37,20 +37,6 @@ const Carousel = () => {
         }}
       >
         {images.map((src, i) => (
-        // <div
-        //   key={i}
-        //   className={`absolute inset-0 transition-opacity duration-1000 ${
-        //     i === current ? "opacity-100" : "opacity-0 pointer-events-none"
-        //   }`}
-        // >
-        //   <Image
-        //     src={src}
-        //     alt={`Banner ${i + 1}`}
-        //     fill
-        //     className="object-cover"
-        //     priority={i === current}
-        //   />
-        // </div>
         <div key={i} className="relative w-full shrink-0 aspect-[3/1]">
             <Image src={src} alt={`Banner ${i + 1}`} fill className="object-cover" />
           </div>    
