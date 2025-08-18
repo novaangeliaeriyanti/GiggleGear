@@ -4,9 +4,9 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images: string[] = [
-  "/Banner_Shop.jpg",
-  "/Banner_Shop.jpg",
-  "/Banner_Shop.jpg",
+  '/banner.webp',
+  '/banner1.webp',
+  '/banner2.webp',
 ];
 
 const Carousel = () => {
@@ -37,7 +37,7 @@ const Carousel = () => {
         }}
       >
         {images.map((src, i) => (
-        <div key={i} className="relative w-full shrink-0 aspect-[3/1]">
+          <div key={i} className="relative w-full shrink-0 aspect-[3/1]">
             <Image src={src} alt={`Banner ${i + 1}`} fill className="object-cover" />
           </div>    
         ))}

@@ -1,3 +1,4 @@
+import CarouselV2 from "@/components/CaarouselV2";
 import Carousel from "@/components/Carousel";
 import EventProducts from "@/components/EventProducts";
 import ProductList from "@/components/ProductList";
@@ -15,7 +16,8 @@ const Homepage = async ({
       {/* <div className="relative aspect-[3/1] mb-12">
         <Image src="/Banner_Shop.jpg" alt="Banner Product" fill />
       </div> */}
-      <Carousel/>
+      {/* <Carousel/> */}
+      <CarouselV2 />
       <EventProducts/>
       <ProductList category={category} params="homepage"/>
       <VideoSection />
