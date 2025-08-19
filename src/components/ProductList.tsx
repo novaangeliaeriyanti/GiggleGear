@@ -1,5 +1,5 @@
 import { ProductsType } from "@/types";
-import Categories from "./Categories";
+import Categories from "../sections/homepage1/Categories";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import Filter from "./Filter";
@@ -127,14 +127,16 @@ const products: ProductsType = [
           {/* <div className="bg-sky-100 rounded-3xl flex flex-col gap-4 md:gap-8 lg:gap-8 p-4 md:p-12 lg:p-24"> */}
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-            {params !== 'products' && (<div className="flex items-center gap-2 text-3xl font-bold">
+            {params !== 'products' && (
+              <div className="flex items-center gap-2 text-3xl font-bold">
                 <span className="flex space-x-2 text-teal-400">
                   <span>Popular</span>
                 </span>
                 <span className="flex text-pink-400 space-x-2">
                   <span>Products</span>
                   </span>
-              </div>)}
+              </div>
+            )}
               {/* <span>Choose your favorite products through our collection</span> */}
             </div>
             <div className="flex justify-between items-center">

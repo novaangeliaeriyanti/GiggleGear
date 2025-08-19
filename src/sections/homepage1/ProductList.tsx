@@ -1,12 +1,7 @@
-'use client';
-
-import Image from 'next/image';
-import { useRef } from 'react';
-import ProductCard from '@/components/ProductCard';
-import { ProductsType } from '@/types';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Categories from '../sections/homepage1/Categories';
-import { cn } from '@/utils/utils';
+import ProductCard from "@/components/ProductCard";
+import { ProductsType } from "@/types";
+import CategoriesProduct from "./CategoriesProduct";
+import Link from "next/link";
 
 const products: ProductsType = [
     {
@@ -118,91 +113,48 @@ const products: ProductsType = [
       images: { blue: "/products/8b.png", green: "/products/8gr.png" },
     },
   ];
-export default function EventProducts() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    const { scrollLeft, clientWidth } = scrollRef.current;
-    const scrollAmount = direction === 'left' ? -clientWidth : clientWidth;
-    scrollRef.current.scrollTo({
-      left: scrollLeft + scrollAmount,
-      behavior: 'smooth',
-    });
-  };
-
+const ProductsListSection = ({ category,params }: { category: string, params?:"homepage" | "products" }) => {
   return (
     <div className="flex justify-center">
-      <div className=" group w-full flex flex-col gap-4 sm:px-0 sm:max-w-xl md:max-w-3xl lg:max-w-7xl">
-        {/* <Categories /> */}
-        {/* <div className="flex items-center gap-2 text-3xl font-bold">
-          <span className="flex space-x-2 text-teal-400">
-            <span>Popular</span>
-          </span>
-          <span className="flex text-pink-400 space-x-2">
-            <span>Products</span>
-            </span>
-        </div> */}
-        <div className='relative w-full flex flex-col'>
-          <div className="absolute rounded-3xl top-0 left-0 h-full w-full block z-0">
-            <Image
-              src="/event-banner.avif"
-              alt="Background Visual"
-              className="h-full w-[240px] object-cover rounded-3xl"
-              width={240}
-              height={360}
-            />
-          </div>
-          <button
-                onClick={() => scroll("left")}
-                aria-label="Scroll Left"
-                className="
-                  absolute left-0 top-1/2 -translate-y-1/2 
-                  translate-x-[-40px] group-hover:translate-x-0
-                  opacity-0 group-hover:opacity-100
-                  pointer-events-none group-hover:pointer-events-auto
-                  transition-all duration-300 ease-in-out
-                  flex z-10 text-pink-400 border-2 border-dashed border-pink-400 p-2
-                  hover:text-white hover:bg-pink-400 rounded-full
-                "
-              >
-                <ChevronLeft className="w-6 h-6" />
-          </button>
+        <div className="w-full  rounded-3xl flex flex-row sm:px-0 sm:max-w-xl md:max-w-3xl lg:max-w-7xl">
+            {/* <div className="rounded-tl-3xl rounded-bl-3xl bg-[url(/event-banner.avif)] bg-cover bg-center overflow-visible"> */}
+            <div className="rounded-tl-3xl rounded-tr-3xl rounded-bl-3xl bg-[url(/grid-line.png)] bg-cover bg-center overflow-visible">
+                <div className="flex flex-col gap-2 pr-8 py-12">
+                    <div className="flex items-center gap-2 text-3xl font-bold">
+                        <span className="flex space-x-2 text-teal-400 text-stroke-3">
+                            <span>Popular</span>
+                        </span>
+                        <span className="flex text-pink-400 space-x-2 text-stroke-3">
+                            <span>Products</span>
+                        </span>
+                    </div>
+                    <span className="">Choose your favorite products through our collection</span>
+                    <div>
+                        <CategoriesProduct />
+                    </div>
+                    {params !== "products" && (
+                      <Link
+                        href={category ? `/products/?category=${category}` : "/products"}
+                        className="flex text-pink-400 justify-start mt-4 underline"
+                      >
+                        View all products
+                      </Link>
+                    )}
 
-          <div
-            ref={scrollRef}
-            className="flex gap-5 z-9 overflow-x-auto scroll-smooth py-4 h-full scrollbar-hidden scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
-          >
-            {products?.map((product, index) => (
-              <div
-                key={product.id}
-                className={cn(
-                  "w-[150px] md:w-[300px] lg:w-[300px] flex-shrink-0 rounded",
-                  index === 0 && "ml-10 md:ml-32 lg:ml-42" // atau `mr-24` 
-                )}
-                
-              >
-                <ProductCard key={product.id} product={product} />
-              </div>
-            ))}
-          </div>
-          <button
-            onClick={() => scroll('right')}
-            aria-label="Scroll Right"
-            className="
-              absolute right-0 top-1/2 -translate-y-1/2 
-              -translate-x-[-40px] group-hover:translate-x-0
-              opacity-0 group-hover:opacity-100
-              pointer-events-none group-hover:pointer-events-auto
-              transition-all duration-300 ease-in-out
-              flex z-10 text-pink-400 border-2 border-dashed border-pink-400 p-2
-              hover:text-white hover:bg-pink-400 rounded-full
-            "
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+                </div>
+            </div>
+            <div className="px-4 py-12 rounded-bl-3xl rounded-tr-3xl rounded-br-3xl  bg-white">
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+                    {products.map((product)=>(
+                        <ProductCard key={product.id} product={product} />
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  );
+  )
 }
+
+export default ProductsListSection

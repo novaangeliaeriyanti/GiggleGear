@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { z } from "zod";
 
 export type ProductType = {
@@ -62,3 +63,12 @@ export type CartStoreActionsType = {
   removeFromCart: (product: CartItemType) => void;
   clearCart: () => void;
 };
+
+export type ServiceHighlightType = {
+  id: string | number;
+  title: string;
+  icon: string | ReactNode;
+};  
+
+export type ServiceHighlightsType = ServiceHighlightType[];
+

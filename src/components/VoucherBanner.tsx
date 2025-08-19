@@ -22,9 +22,9 @@ const VoucherBanner = () => {
     }
   };
   
-  // rounded-3xl bg-primary-50 bg-[url(/grid-line.png)] bg-cover bg-center px-8 py-20 sm:px-16 sm:py-24
   return (
-    <div className="relative bg-[#d0f1f1] text-pink-400 rounded-3xl bg-primary-50 bg-[url(/grid-line.png)] bg-cover bg-center overflow-visible flex items-center px-6 py-4 sm:py-6 sm:px-8">
+    <div className="flex justify-center">
+    <div className="relative w-full bg-[#d0f1f1] text-pink-400 rounded-3xl bg-primary-50 bg-[url(/grid-line.png)] bg-cover bg-center overflow-visible flex items-center px-6 py-4 sm:py-6 sm:px-0 sm:max-w-xl md:max-w-3xl lg:max-w-7xl">
       {/* Image with translate */}
       <div className="absolute -top-8 w-12 h-12 md:w-20 md:h-20 lg:w-20 lg:h-20">
         <Image
@@ -63,6 +63,7 @@ const VoucherBanner = () => {
             </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
